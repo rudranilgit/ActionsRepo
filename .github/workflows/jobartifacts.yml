@@ -30,4 +30,4 @@ jobs:
               with:
                 name: my-artifact 
             - name: List Downloaded Artifacts
-              run: ls -la my-artifact               
+              run: ls              
