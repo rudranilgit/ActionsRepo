@@ -1,6 +1,6 @@
 name: Create Event Example
 on :
-    create:
+    workflow_dispatch:
 
 jobs:
     createevent_demo:
