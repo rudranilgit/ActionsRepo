@@ -19,3 +19,7 @@ jobs:
                 echo "Action path: ${{github.action_path }}"
                 echo "Action REF: ${{github.action_ref }}"
                 echo "WORKFLOW:"${{github.workflow}}
+                echo "ACTOR ID:${{github.actor_id }}"
+                echo "ACTOR:${{github.actor }}"
+                echo "EVENT NAME:${{github.event_name }}"
+                echo "STATUS:${{github.action_status }}"
