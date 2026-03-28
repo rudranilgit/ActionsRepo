@@ -15,3 +15,6 @@ jobs:
                 echo "Repository Name:${{ github.repository }}"
                 echo "WorkFlow NAme:${{github.action}}"
                 echo "Path: ${{github.ref}}"  
+                echo "Action path: ${{github.action_path }}"
+                echo "Action REF: ${{github.action_ref }}"
+                echo "WORKFLOW:"${{github.workflow}}
