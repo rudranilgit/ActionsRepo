@@ -11,6 +11,7 @@ jobs:
             - name: Print Tag Name
               run: echo "Tag Name:${{ github.ref_name }}"
             - name: Print Repository Name
+              id: prit_info
               run: |
                 echo "Repository Name:${{ github.repository }}"
                 echo "WorkFlow NAme:${{github.action}}"
