@@ -9,4 +9,4 @@ jobs:
             - name: Create Event Example
               run: echo "This is an example of a create event triggered by a tag starting with 'eventtag'"
             - name: Print Tag Name
-              run: echo "Tag Name:+ ${{ github.ref_name }}"
+              run: echo "Tag Name:${{ github.ref_name }}"
