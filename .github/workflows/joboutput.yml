@@ -16,7 +16,9 @@ jobs:
       - name: Print Date
         id: print_date
         shell: pwsh
-        run: "DATE IS: $((Get-Date -Format 'yyyy-MM-dd'))"
+        run: |
+          $date = Get-Date -Format 'yyyy-MM-dd'
+          Write-Host "DATE IS: $date"
 
   jobB:
     needs: joboutput_demo
