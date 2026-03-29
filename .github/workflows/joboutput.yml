@@ -2,7 +2,7 @@ name: Job Output
 on: [workflow_dispatch]
 jobs:
     joboutput_demo:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
         outputs:
             todaysdate: ${{ steps.generate_output.outputs.todaysdate }}
         steps:
