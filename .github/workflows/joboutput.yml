@@ -9,6 +9,8 @@ jobs:
             - name: Generate Output
               id: generate_output
               run: echo %date% 'todaysdate={}' >> $GITHUB_OUTPUT ';'
+            - name: Print Date
+              run: "DATE IS:$(echo %date%) "
     jobB:
         needs: joboutput_demo
         runs-on: ubuntu-latest
