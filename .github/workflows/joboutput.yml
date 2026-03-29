@@ -1,19 +1,26 @@
 name: Job Output
 on: [workflow_dispatch]
+
 jobs:
-    joboutput_demo:
-        runs-on: windows-latest
-        outputs:
-            todaysdate: ${{ steps.generate_output.outputs.todaysdate }}
-        steps:
-            - name: Generate Output
-              id: generate_output
-              run: echo %date% 'todaysdate={}' >> $GITHUB_OUTPUT ';'
-            - name: Print Date
-              run: "DATE IS:$(echo %date%) "
-    jobB:
-        needs: joboutput_demo
-        runs-on: ubuntu-latest
-        steps:
-            - name: Use Output
-              run: echo "Today's date is ${{ needs.joboutput_demo.outputs.todaysdate }}"          
+  joboutput_demo:
+    runs-on: windows-latest
+    outputs:
+      todaysdate: ${{ steps.generate_output.outputs.todaysdate }}
+    steps:
+      - name: Generate Output
+        id: generate_output
+        shell: pwsh  # or powershell
+        run: |
+          $date = Get-Date -Format 'yyyy-MM-dd'
+          echo "todaysdate=$date" >> $env:GITHUB_OUTPUT
+      - name: Print Date
+        id: print_date
+        shell: pwsh
+        run: "DATE IS: $((Get-Date -Format 'yyyy-MM-dd'))"
+
+  jobB:
+    needs: joboutput_demo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Output
+        run: echo "Today's date is ${{ needs.joboutput_demo.outputs.todaysdate }}"
