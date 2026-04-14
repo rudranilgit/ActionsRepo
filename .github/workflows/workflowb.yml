@@ -8,6 +8,18 @@ jobs:
     job1:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         runs-on: ubuntu-latest
+        outputs:
+            wrkB_output: ${{ steps.readfile.outputs.job1_output }}
         steps:
+            - name: Download artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: job1-output
+                run_id: ${{ github.event.workflow_run.id }}
+            - name: Read Output
+              id: readfile
+              run: |
+                output=$(cat output.txt)
+                echo "job1_output=$output" >> $GITHUB_OUTPUT
             - name: Greeting
-              run: echo "Hello ${{ github.event.workflow_run.outputs.job1_output }}! "
+              run: echo "Hello ${{ steps.readfile.outputs.job1_output }}! "

@@ -15,3 +15,10 @@ jobs:
         run: |
           name="RUDRA"
           echo "test_output=$name" >> $GITHUB_OUTPUT
+      - name: Save output to file
+        run: echo "${{ steps.set_output.outputs.test_output }}" > output.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: job1-output
+          path: output.txt    
