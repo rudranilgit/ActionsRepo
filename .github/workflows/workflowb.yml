@@ -4,9 +4,9 @@ on :
         workflows: ["Workflow A"]
         types:
             - completed
-#permissions:
-  #actions: read
-  #contents: read            
+permissions:
+  actions: read
+  contents: read            
 jobs:
     job1:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
@@ -19,7 +19,7 @@ jobs:
               with:
                 name: job1-output
                 run-id: ${{ github.event.workflow_run.id }}
-                #github-token: ${{ secrets.GITHUB_TOKEN }}
+                github-token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Read Output
               id: readfile
