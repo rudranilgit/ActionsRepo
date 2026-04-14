@@ -12,4 +12,6 @@ jobs:
               run: echo "This is Job 1, Step 2"
             - name: Set Output
               id: set_output
-              run: echo "test_output="RUDRA" >> $GITHUB_OUTPUT
+              run: |
+              $name="RUDRA"
+              echo "test_output=$name" >> $GITHUB_OUTPUT
